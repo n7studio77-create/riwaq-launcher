@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10120f">
+  <meta name="description" content="رِواق — مكتبة عربية للألعاب والمودات والتعريبات.">
+  <title>رِواق — ألعابك، بطريقتك</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="رواق - الرئيسية">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>رِواق<small>RIWAQ GAMING</small></span>
+      </a>
+
+      <p class="nav-label">مساحتك</p>
+      <nav class="main-nav" aria-label="التنقل الرئيسي">
+        <button class="nav-link active" type="button" data-view="library"><span class="nav-glyph">▦</span> المكتبة <span class="nav-count" id="catalogCount">0</span></button>
+        <button class="nav-link" type="button" data-view="myLibrary"><span class="nav-glyph">▤</span> مكتبتي <span class="nav-count" id="myLibraryCount">0</span></button>
+        <button class="nav-link" type="button" data-view="games"><span class="nav-glyph">◈</span> الألعاب</button>
+        <button class="nav-link" type="button" data-view="mods"><span class="nav-glyph">⌘</span> المودات <span class="nav-badge">جديد</span></button>
+        <button class="nav-link" type="button" data-view="translations"><span class="nav-glyph">文</span> التعريبات</button>
+        <button class="nav-link" type="button" data-view="favorites"><span class="nav-glyph">♡</span> المفضلة</button>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-note">
+        <span class="note-icon">✦</span>
+        <strong>اللعب أحلى بلغتك</strong>
+        <p>اكتشف إضافات وتعريبات من مجتمع اللاعبين العربي.</p>
+        <button type="button" class="text-button" data-toast="قريباً — تقدر ترسل مشروعك للمجتمع.">شارك مشروعك <span>←</span></button>
+      </div>
+      <div class="sidebar-footer"><span class="online-dot"></span> مجتمع اللاعبين العرب</div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="menuButton" type="button" aria-label="فتح القائمة">☰</button>
+        <div class="crumb"><span>رِواق</span><b>/</b><strong id="currentSection">المكتبة</strong></div>
+        <div class="top-actions">
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="ابحث عن لعبة أو مود..." autocomplete="off">
+            <kbd>Ctrl K</kbd>
+          </label>
+          <button class="icon-button notification-button" type="button" aria-label="الإشعارات" data-toast="ما عندك إشعارات جديدة حالياً.">♧<i></i></button>
+          <button class="button button-outline owner-button" id="adminButton" type="button" hidden>إدارة المحتوى <span>＋</span></button>
+          <button class="profile-button" id="accountButton" type="button">
+            <span class="profile-avatar">ر</span><span class="profile-name">لاعب جديد</span><span class="chevron">⌄</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="spark">✦</span> بوابتك لعالم الألعاب</div>
+            <h1>اللعبة لك.<br><em>والتجربة على كيفك.</em></h1>
+            <p>ألعاب تستاهل وقتك، مودات تغيّر كل شيء، وتعريبات تقرّبك من القصة.</p>
+            <div class="hero-actions">
+              <button class="button button-primary" type="button" data-scroll="catalog">اكتشف المكتبة <span>←</span></button>
+              <button class="button button-quiet" type="button" data-view-target="translations"><span class="translate-icon">文</span> تصفّح التعريبات</button>
+            </div>
+            <div class="hero-social-proof"><div class="avatar-stack"><span>ع</span><span>م</span><span>ن</span><b>+</b></div><span>مجتمع عربي يكبر كل يوم</span></div>
+          </div>
+          <div class="hero-art" aria-label="غلاف لعبة خيالي">
+            <div class="art-glow"></div>
+            <div class="art-grid"></div>
+            <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+            <div class="art-sigil">R</div>
+            <span class="art-caption">PLAY YOUR WAY</span>
+            <span class="art-chip"><i></i> اختيار المجتمع</span>
+          </div>
+          <div class="hero-index"><span>01</span><i></i><span>03</span></div>
+        </section>
+
+        <section class="stats-row" aria-label="إحصائيات المكتبة">
+          <div class="stat"><span class="stat-icon">◈</span><div><strong id="catalogTotal">12</strong><small>عنصر في المكتبة</small></div></div>
+          <span class="stat-divider"></span>
+          <div class="stat"><span class="stat-icon">⌘</span><div><strong id="modTotal">04</strong><small>مودات مختارة</small></div></div>
+          <span class="stat-divider"></span>
+          <div class="stat"><span class="stat-icon">文</span><div><strong id="translationTotal">04</strong><small>تعريبات مجتمعية</small></div></div>
+          <div class="stats-status"><span class="online-dot"></span> تتحدّث باستمرار</div>
+        </section>
+
+        <section class="catalog-section" id="catalog">
+          <div class="section-heading">
+            <div><p class="section-kicker">مساحة اللعب</p><h2 id="sectionTitle">مختارة لك <span class="heading-dot">.</span></h2></div>
+            <button type="button" class="view-all" id="viewAllButton">عرض الكل <span>←</span></button>
+          </div>
+          <div class="catalog-toolbar">
+            <div class="filter-tabs" role="group" aria-label="تصفية المحتوى">
+              <button type="button" class="filter-tab active" data-filter="all">الكل</button>
+              <button type="button" class="filter-tab" data-filter="game">ألعاب</button>
+              <button type="button" class="filter-tab" data-filter="mod">مودات</button>
+              <button type="button" class="filter-tab" data-filter="translation">تعريبات</button>
+            </div>
+            <button class="sort-button" id="sortButton" type="button" data-toast="يعرض لك اختيارات المجتمع حالياً.">✧ <span>اختيارات المجتمع</span>⌄</button>
+          </div>
+          <div class="game-grid" id="gameGrid" aria-live="polite"></div>
+          <div class="catalog-footer"><span id="resultCount">12 عنصر</span><span class="footer-line"></span><span>أكثر من مجرد لعب <b>✦</b></span></div>
+        </section>
+
+        <section class="admin-panel" id="adminPanel" hidden>
+          <div class="section-heading">
+            <div><p class="section-kicker">للمالك فقط</p><h2>إدارة المحتوى <span class="heading-dot">.</span></h2></div>
+            <button type="button" class="view-all" id="closeAdminButton">إخفاء <span>×</span></button>
+          </div>
+          <form id="itemForm" class="admin-form">
+            <label>النوع<select name="kind" required><option value="game">لعبة</option><option value="mod">مود</option><option value="translation">تعريب</option></select></label>
+            <label>اسم المحتوى<input name="title" maxlength="100" required placeholder="مثال: Cyberpunk 2077"></label>
+            <label>الاسم الظاهر بالعربي<input name="subtitle" maxlength="100" required placeholder="الاسم في المكتبة"></label>
+            <label>المنصة / اللعبة<input name="platform" maxlength="80" required placeholder="PC"></label>
+            <label>التصنيف<input name="tag" maxlength="60" required placeholder="عالم مفتوح"></label>
+            <label class="form-wide">الوصف<textarea name="description" maxlength="1000" rows="3" placeholder="وصف مختصر للمحتوى"></textarea></label>
+            <label class="form-wide">صفحة اللعبة (اختياري)<input name="metadata_url" type="url" placeholder="https://store.steampowered.com/..."></label>
+            <label class="form-wide">رابط صورة الغلاف<input name="image_url" type="url" placeholder="https://..."></label>
+            <label class="form-wide">رابط تنزيل مباشر HTTPS<input name="source_url" type="url" required placeholder="https://..."></label>
+            <p class="form-wide metadata-status" id="metadataStatus" aria-live="polite"></p>
+            <div class="form-wide form-submit-row"><p>ألصق رابط تنزيل HTTPS مباشر؛ يحاول رِواق استخراج اسم الملف والبحث عن معلوماته وغلافه في Steam تلقائياً. راجع الاقتراحات قبل الإضافة، ويمكنك إدخال صفحة Steam منفصلة إذا لم يكفِ اسم الملف. Supabase يحفظ الحسابات والكتالوج فقط.</p><button class="button button-primary" type="submit">إضافة المحتوى <span>＋</span></button></div>
+          </form>
+        </section>
+
+        <section class="community-banner">
+          <div class="community-emblem">ر</div>
+          <div><p class="section-kicker">مع بعض تصير أحلى</p><h2>اللعب يجمعنا.</h2><p>شارك اقتراحاتك واكتشف وش يلعبه المجتمع.</p></div>
+          <button class="button button-outline" type="button" data-toast="قريباً — بنفتح أبواب المجتمع.">انضم للمجتمع <span>↗</span></button>
+          <span class="banner-star">✳</span>
+        </section>
+        <footer class="page-footer"><span>© 2026 رِواق</span><span>صُنع للاعب العربي، بكل حب <b>♥</b></span><button type="button" data-toast="سياسة الخصوصية — قريباً.">الخصوصية</button></footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+  <dialog class="details-dialog" id="detailsDialog">
+    <button class="dialog-close" id="dialogClose" type="button" aria-label="إغلاق">×</button>
+    <div class="dialog-cover" id="dialogCover"></div>
+    <div class="dialog-content">
+      <div class="dialog-meta"><span id="dialogCategory"></span><span class="dialog-dot">•</span><span id="dialogPlatform"></span></div>
+      <h2 id="dialogTitle"></h2>
+      <p id="dialogDescription"></p>
+      <div class="dialog-info"><span>✦</span><p id="dialogNotice">هذا رابط خارجي للمحتوى. أضفه إلى مكتبتك بعد تسجيل الدخول للوصول إلى المصدر.</p></div>
+      <div class="dialog-actions">
+        <button class="button button-primary dialog-link" id="addToLibraryButton" type="button">أضف لمكتبتي <span>＋</span></button>
+        <button class="button button-quiet dialog-link" id="dialogLink" type="button" hidden>افتح المصدر <span>↗</span></button>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="details-dialog auth-dialog" id="authDialog">
+    <button class="dialog-close" id="authClose" type="button" aria-label="إغلاق">×</button>
+    <div class="auth-content">
+      <span class="note-icon">✦</span>
+      <div id="signedOutPanel">
+        <p class="section-kicker">حساب رِواق</p>
+        <h2 id="authTitle">سجّل دخولك</h2>
+        <p class="auth-intro">تسجيل الدخول مطلوب لدخول رِواق واستخدام مكتبتك.</p>
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab active" data-auth-mode="signin">تسجيل الدخول</button>
+          <button type="button" class="auth-tab" data-auth-mode="signup">حساب جديد</button>
+        </div>
+        <form id="authForm" class="auth-form">
+          <label>البريد الإلكتروني<input type="email" name="email" autocomplete="email" required></label>
+          <label>كلمة المرور<input type="password" name="password" autocomplete="current-password" minlength="8" required></label>
+          <button class="button button-primary" id="authSubmit" type="submit">دخول <span>←</span></button>
+        </form>
+      </div>
+      <div id="signedInPanel" hidden>
+        <p class="section-kicker">تم تسجيل الدخول</p>
+        <h2 id="accountEmail"></h2>
+        <p class="auth-intro">مكتبتك الشخصية مرتبطة بهذا الحساب.</p>
+        <button class="button button-primary" id="signOutButton" type="button">تسجيل الخروج</button>
+      </div>
+      <p class="auth-message" id="authMessage" role="status" aria-live="polite"></p>
+    </div>
+  </dialog>
+  <section class="download-panel" id="downloadPanel" aria-live="polite" hidden>
+    <div class="download-panel-head">
+      <div><small>مدير التنزيلات</small><strong id="downloadTitle"></strong></div>
+      <button class="download-close" id="downloadCloseButton" type="button" aria-label="إخفاء">×</button>
+    </div>
+    <progress id="downloadProgressBar" max="100" value="0" hidden></progress>
+    <p id="downloadStatus"></p>
+    <div class="download-panel-actions">
+      <button class="button button-outline" id="downloadPauseButton" type="button">إيقاف مؤقت</button>
+      <button class="button button-quiet" id="downloadCancelButton" type="button">إلغاء التنزيل</button>
+      <button class="button button-outline" id="downloadRetryButton" type="button" hidden>إعادة المحاولة</button>
+      <button class="button button-outline" id="downloadShowButton" type="button" hidden>إظهار الملف</button>
+    </div>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>

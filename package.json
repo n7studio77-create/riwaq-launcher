@@ -1,0 +1,54 @@
+{
+  "name": "riwaq-game-hub",
+  "version": "1.0.3",
+  "description": "Windows game launcher for Riwaq",
+  "author": "Riwaq",
+  "private": true,
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis",
+    "release:win": "electron-builder --win nsis --publish always"
+  },
+  "devDependencies": {
+    "electron": "45.3.4",
+    "electron-builder": "26.18.0"
+  },
+  "build": {
+    "appId": "com.riwaq.gamehub",
+    "productName": "Riwaq",
+    "publish": {
+      "provider": "github",
+      "owner": "n7studio77-create",
+      "repo": "riwaq-launcher",
+      "releaseType": "release"
+    },
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "app.js",
+      "config.js",
+      "index.html",
+      "styles.css",
+      "desktop/**/*",
+      "README.md",
+      "supabase/schema.sql",
+      "supabase/upgrade-content-uploads.sql"
+    ],
+    "win": {
+      "target": "nsis",
+      "artifactName": "Riwaq-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.11"
+  }
+}
