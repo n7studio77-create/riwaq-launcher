@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10120f">
-  <meta name="description" content="رِواق — مكتبة عربية للألعاب والمودات والتعريبات.">
+  <meta name="description" content="رِواق — مكتبة عربية للألعاب والتعريبات، والمودات قريبًا.">
   <title>رِواق — ألعابك، بطريقتك</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,7 @@
         <button class="nav-link active" type="button" data-view="library"><span class="nav-glyph">▦</span> المكتبة <span class="nav-count" id="catalogCount">0</span></button>
         <button class="nav-link" type="button" data-view="myLibrary"><span class="nav-glyph">▤</span> مكتبتي <span class="nav-count" id="myLibraryCount">0</span></button>
         <button class="nav-link" type="button" data-view="games"><span class="nav-glyph">◈</span> الألعاب</button>
-        <button class="nav-link" type="button" data-view="mods"><span class="nav-glyph">⌘</span> المودات <span class="nav-badge">جديد</span></button>
+        <button class="nav-link" type="button" data-view="mods"><span class="nav-glyph">⌘</span> المودات <span class="nav-badge">قريبًا</span></button>
         <button class="nav-link" type="button" data-view="translations"><span class="nav-glyph">文</span> التعريبات</button>
         <button class="nav-link" type="button" data-view="favorites"><span class="nav-glyph">♡</span> المفضلة</button>
       </nav>
@@ -46,7 +46,7 @@
         <div class="top-actions">
           <label class="search-box">
             <span aria-hidden="true">⌕</span>
-            <input id="searchInput" type="search" placeholder="ابحث عن لعبة أو مود..." autocomplete="off">
+            <input id="searchInput" type="search" placeholder="ابحث عن لعبة أو تعريب..." autocomplete="off">
             <kbd>Ctrl K</kbd>
           </label>
           <button class="icon-button notification-button" type="button" aria-label="الإشعارات" data-toast="ما عندك إشعارات جديدة حالياً.">♧<i></i></button>
@@ -62,7 +62,7 @@
           <div class="hero-copy">
             <div class="eyebrow"><span class="spark">✦</span> بوابتك لعالم الألعاب</div>
             <h1>اللعبة لك.<br><em>والتجربة على كيفك.</em></h1>
-            <p>ألعاب تستاهل وقتك، مودات تغيّر كل شيء، وتعريبات تقرّبك من القصة.</p>
+            <p>ألعاب تستاهل وقتك وتعريبات تقرّبك من القصة، والمودات قريبًا.</p>
             <div class="hero-actions">
               <button class="button button-primary" type="button" data-scroll="catalog">اكتشف المكتبة <span>←</span></button>
               <button class="button button-quiet" type="button" data-view-target="translations"><span class="translate-icon">文</span> تصفّح التعريبات</button>
@@ -83,7 +83,7 @@
         <section class="stats-row" aria-label="إحصائيات المكتبة">
           <div class="stat"><span class="stat-icon">◈</span><div><strong id="catalogTotal">12</strong><small>عنصر في المكتبة</small></div></div>
           <span class="stat-divider"></span>
-          <div class="stat"><span class="stat-icon">⌘</span><div><strong id="modTotal">04</strong><small>مودات مختارة</small></div></div>
+          <div class="stat stat-mods"><span class="stat-icon">⌘</span><div><strong id="modTotal">قريبًا</strong><small>المودات</small></div></div>
           <span class="stat-divider"></span>
           <div class="stat"><span class="stat-icon">文</span><div><strong id="translationTotal">04</strong><small>تعريبات مجتمعية</small></div></div>
           <div class="stats-status"><span class="online-dot"></span> تتحدّث باستمرار</div>
@@ -98,7 +98,7 @@
             <div class="filter-tabs" role="group" aria-label="تصفية المحتوى">
               <button type="button" class="filter-tab active" data-filter="all">الكل</button>
               <button type="button" class="filter-tab" data-filter="game">ألعاب</button>
-              <button type="button" class="filter-tab" data-filter="mod">مودات</button>
+              <button type="button" class="filter-tab" data-filter="mod">مودات قريبًا</button>
               <button type="button" class="filter-tab" data-filter="translation">تعريبات</button>
             </div>
             <button class="sort-button" id="sortButton" type="button" data-toast="يعرض لك اختيارات المجتمع حالياً.">✧ <span>اختيارات المجتمع</span>⌄</button>

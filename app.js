@@ -451,6 +451,7 @@ async function startDesktopDownload(item, itemId, url, fileName) {
 function getVisibleItems() {
   const query = searchInput.value.trim().toLocaleLowerCase("ar");
   return items.filter((item) => {
+    if (item.type === "mod" && !isOwner) return false;
     const matchesView = activeView === "library" ||
       (activeView === "myLibrary" ? libraryIds.has(item.id) || downloadedItemIds.has(item.id) :
         activeView === "favorites" ? favorites.has(item.id) : item.type === activeView.slice(0, -1));
@@ -462,15 +463,25 @@ function getVisibleItems() {
 
 function render() {
   const visible = getVisibleItems();
-  document.querySelector("#catalogTotal").textContent = items.length;
-  document.querySelector("#modTotal").textContent = String(items.filter((item) => item.type === "mod").length).padStart(2, "0");
+  const availableItems = isOwner ? items : items.filter((item) => item.type !== "mod");
+  const modsComingSoon = activeView === "mods" && !isOwner;
+  document.querySelector("#catalogTotal").textContent = availableItems.length;
+  document.querySelector("#modTotal").textContent = "قريبًا";
   document.querySelector("#translationTotal").textContent = String(items.filter((item) => item.type === "translation").length).padStart(2, "0");
-  document.querySelector("#catalogCount").textContent = items.length;
-  const myLibrarySize = new Set([...libraryIds, ...downloadedItemIds]).size;
+  document.querySelector("#catalogCount").textContent = availableItems.length;
+  const availableIds = new Set(availableItems.map((item) => item.id));
+  const myLibrarySize = new Set([...libraryIds, ...downloadedItemIds].filter((itemId) => availableIds.has(itemId))).size;
   document.querySelector("#myLibraryCount").textContent = currentUser ? myLibrarySize : "—";
   document.querySelector("#resultCount").textContent = `${visible.length} ${visible.length === 1 ? "عنصر" : "عناصر"}`;
   document.querySelector("#adminButton").hidden = !isOwner;
+  document.querySelector(".catalog-toolbar").hidden = modsComingSoon;
+  document.querySelector(".catalog-footer").hidden = modsComingSoon;
   if (!isOwner) document.querySelector("#adminPanel").hidden = true;
+
+  if (modsComingSoon) {
+    grid.innerHTML = `<div class="empty-state coming-soon-state" role="status"><span>⌘</span><p class="coming-soon-label">قريبًا</p><h3>قسم المودات قيد التجهيز</h3><p>نعمل على تجهيز هذا القسم، وسيكون متاحًا قريبًا.</p></div>`;
+    return;
+  }
 
   if (activeView === "myLibrary" && !currentUser) {
     grid.innerHTML = `<div class="empty-state"><span>♙</span><h3>سجّل دخولك لعرض مكتبتك</h3><p>العناصر التي تضيفها تظهر هنا وتبقى مرتبطة بحسابك.</p><button class="button button-primary" type="button" data-auth-open>تسجيل الدخول <span>←</span></button></div>`;
@@ -752,7 +763,7 @@ function openDetails(itemId) {
 function setView(view) {
   if (!viewNames[view]) return;
   activeView = view;
-  activeFilter = "all";
+  activeFilter = view === "mods" ? "mod" : "all";
   document.querySelector("#currentSection").textContent = viewNames[view];
   document.querySelector("#sectionTitle").innerHTML = `${view === "library" ? "مختارة لك" : viewNames[view]} <span class="heading-dot">.</span>`;
   document.querySelectorAll(".nav-link").forEach((button) => {
@@ -761,7 +772,7 @@ function setView(view) {
     if (selected) button.setAttribute("aria-current", "page");
     else button.removeAttribute("aria-current");
   });
-  document.querySelectorAll(".filter-tab").forEach((button) => button.classList.toggle("active", button.dataset.filter === "all"));
+  document.querySelectorAll(".filter-tab").forEach((button) => button.classList.toggle("active", button.dataset.filter === activeFilter));
   render();
   document.querySelector("#sidebar").classList.remove("open");
   document.querySelector("#sidebarScrim").classList.remove("visible");
@@ -779,6 +790,10 @@ function showAuthError(message) {
 
 document.querySelectorAll(".nav-link").forEach((button) => button.addEventListener("click", () => setView(button.dataset.view)));
 document.querySelectorAll(".filter-tab").forEach((button) => button.addEventListener("click", () => {
+  if (button.dataset.filter === "mod" && !isOwner) {
+    setView("mods");
+    return;
+  }
   activeFilter = button.dataset.filter;
   document.querySelectorAll(".filter-tab").forEach((tab) => tab.classList.toggle("active", tab === button));
   render();
